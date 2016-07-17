@@ -10,10 +10,14 @@ output "Rancher Server SSH" {
   value = "ssh -i certs/devops ubuntu@${aws_instance.server-management.public_dns}"
 }
 
-output "Docker Server IPs" {
-  value = "${join(", ", aws_instance.server-docker.*.public_ip)}"
+output "Management Load Balancer" {
+  value = "${aws_elb.management-load-balancer.dns_name}"
 }
 
-output "Domain Name Servers for ${var.config.domain}" {
-  value = "${join(", ", aws_route53_zone.main-zone.name_servers)}"
+output "Docker Load Balancer" {
+  value = "${aws_elb.docker-load-balancer.dns_name}"
+}
+
+output "Docker Server IPs" {
+  value = "${join(", ", aws_instance.server-docker.*.public_ip)}"
 }
