@@ -80,7 +80,7 @@ Verify the execution of the infrastructure. Especially helpful after changing co
 npm run plan
 ```
 #### Destroy
-Destroy the entire infrastructure. Please note that the Route53 zone will take a couple hours (worst case) to be setup for your domain as it required a NameServer update.
+Destroy the entire infrastructure.
 ```
 npm run destroy
 ```
