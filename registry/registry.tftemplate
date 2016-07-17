@@ -1,0 +1,43 @@
+resource "aws_ecr_repository" "{{repository-dashed-name}}" {
+  name = "{{repository-name}}"
+}
+
+resource "aws_ecr_repository_policy" "{{repository-dashed-name}}-policy" {
+  repository = "${aws_ecr_repository.{{repository-dashed-name}}.name}"
+  policy = <<EOF
+{
+    "Version": "2008-10-17",
+    "Statement": [
+        {
+            "Sid": "new policy",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:BatchGetImage",
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:PutImage",
+                "ecr:InitiateLayerUpload",
+                "ecr:UploadLayerPart",
+                "ecr:CompleteLayerUpload",
+                "ecr:DescribeRepositories",
+                "ecr:GetRepositoryPolicy",
+                "ecr:ListImages",
+                "ecr:DeleteRepository",
+                "ecr:BatchDeleteImage",
+                "ecr:SetRepositoryPolicy",
+                "ecr:DeleteRepositoryPolicy"
+            ]
+        }
+    ]
+}
+EOF
+}
+
+output "Repository - {{repository-dashed-name}}" {
+  value = "${aws_ecr_repository.{{repository-dashed-name}}.name}"
+}
+
+output "Repository URL - {{repository-dashed-name}}" {
+  value = "${aws_ecr_repository.{{repository-dashed-name}}.repository_url}"
+}

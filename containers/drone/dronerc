@@ -1,0 +1,4 @@
+DATABASE_DRIVER=sqlite3
+DATABASE_CONFIG=/var/lib/drone/drone.sqlite
+REMOTE_DRIVER={{drone-driver}}
+REMOTE_CONFIG={{drone-remote-config}}

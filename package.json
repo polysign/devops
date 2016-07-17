@@ -1,0 +1,22 @@
+{
+  "name": "code",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "terraform apply -var-file=./terraform.tfvars -state=infrastructure/terraform.tfstate infrastructure",
+    "plan": "terraform plan -var-file=./terraform.tfvars -state=infrastructure/terraform.tfstate infrastructure",
+    "destroy": "terraform destroy -var-file=./terraform.tfvars -state=infrastructure/terraform.tfstate infrastructure",
+    "registry": "node registry/registry.js",
+    "postregistry": "terraform apply -var-file=./terraform.tfvars -state=registry/terraform.tfstate registry"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@polysign.github.com:polysign/devops.git"
+  },
+  "author": "Georges Jentgen <georges@polysign.lu>",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.13.1",
+    "shelljs": "^0.7.0"
+  }
+}

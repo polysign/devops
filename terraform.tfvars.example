@@ -1,0 +1,20 @@
+/* AWS Access key & secret */
+config.access_key = ""
+config.secret_key = ""
+
+/* Content of certs/devops.pub (create using ssh-keygen first) */
+config.key-pair = ""
+
+/* Sizing config etc. */
+config.management-instance-type = "t2.micro"
+config.docker-instance-type = "t2.nano"
+config.docker-server-count = 3
+
+/* Drone configuration*/
+config.drone-driver = "bitbucket"
+config.drone-remote-config = "https://bitbucket.org?client_id= <client_id> &client_secret= <client_secret>"
+
+/* Project name & namespace */
+config.domain = "example.com"
+config.namespace = "demo"
+config.name = "Demo"

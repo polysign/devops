@@ -1,0 +1,9 @@
+.DS_Store
+
+/node_modules
+/certs/devops
+/certs/devops.pub
+
+terraform.tfvars
+terraform.tfstate
+terraform.tfstate.backup

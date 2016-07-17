@@ -1,0 +1,25 @@
+version: "2"
+services:
+
+  rancher:
+    build:
+      context: .
+      dockerfile: ./containers/rancher/Dockerfile
+    ports:
+      - "8001:8080"
+    restart: always
+
+  drone:
+    build:
+      context: .
+      dockerfile: ./containers/drone/Dockerfile
+    ports:
+      - "8002:8000"
+    volumes:
+      - drone-data:/var/lib/drone
+    env_file: ./containers/drone/dronerc
+    restart: always
+
+volumes:
+  rancher-data:
+  drone-data:
