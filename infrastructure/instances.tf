@@ -19,7 +19,6 @@ resource "aws_instance" "server-management" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo apt-get install -y language-pack-UTF-8",
       "mkdir -p /usr/local/bin/",
       "mkdir -p /home/${var.config.instance-user-name}/containers"
     ]
@@ -32,8 +31,8 @@ resource "aws_instance" "server-management" {
 
   provisioner "remote-exec" {
     inline = [
-      "sed -i '' 's/{{drone-driver}}/${var.config.drone-driver}/g' containers/drone/dronerc",
-      "sed -i '' 's/{{drone-remote-config}}/${var.config.drone-remote-config}/g' containers/drone/dronerc"
+      "sudo sed -i 's/{{drone-driver}}/$a/g' /home/${var.config.instance-user-name}/containers/drone/dronerc",
+      "sudo sed -i 's%{{drone-remote-config}}%${var.config.drone-remote-config}%g' /home/${var.config.instance-user-name}/containers/drone/dronerc"
     ]
   }
 
