@@ -7,14 +7,14 @@ resource "aws_elb" "management-load-balancer" {
   subnets = ["${aws_subnet.default-public-subnet.id}"]
 
   listener {
-    instance_port = 80
+    instance_port = 8001
     instance_protocol = "http"
     lb_port = 8001
     lb_protocol = "http"
   }
 
   listener {
-    instance_port = 8001
+    instance_port = 8002
     instance_protocol = "http"
     lb_port = 8002
     lb_protocol = "http"
